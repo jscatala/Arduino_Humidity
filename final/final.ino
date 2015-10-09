@@ -30,7 +30,13 @@ unsigned long currmillisLeds[]={0,0,0,0};
 dht DHT;
 int setDHum, currDHum, setDTemp, currDTemp;
 int oldDHum, oldDTemp;
-bool updateVals=0;
+bool updateDHT=0;
+bool runDHT=false;
+
+int setMois, currDMois, currRMois;
+int oldDMois, oldRMois;
+bool updateMois=0;
+bool runMois=false;
 
 volatile int working_mode=0;                  //working mode
 volatile unsigned long last_interrupt_time=0; //last time interrupt was called
@@ -77,14 +83,8 @@ void setup() {
   //##############################################
   
   setLeds();
+  setValues();
   
-  currDTemp=0;
-  currDHum=0;
-  oldDTemp=0;
-  oldDHum=0;
-  setDTemp=30;
-  setDHum=450;
-  t_relay_on=1;
   t_sensors=millis();
 
 }
@@ -143,6 +143,7 @@ void loop()
         humidity_lights();
         break;
       case 2:
+      //Not Done dht_setup();
         dht_lights();
         break;
       case 3:
@@ -154,7 +155,7 @@ void loop()
         working_mode=0;
         break;
       default:
-        printData();
+        digestData();
     } 
   }
   doLeds();

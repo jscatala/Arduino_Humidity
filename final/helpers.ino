@@ -39,3 +39,22 @@ void setLeds()
   blinkStatic(600,300,4);
   setallLeds(0);
 }
+
+void setValues()
+{
+  //######## DHT Data ###########
+  currDTemp=0;
+  currDHum=0;
+  oldDTemp=0;
+  oldDHum=0;
+  setDTemp=30;
+  setDHum=450;
+  
+  //#######Moisture Data ########
+  currDMois=0;
+  currRMois=0;
+  oldDMois=0;
+  oldRMois=0;
+  setMois=500;
+  
+}
