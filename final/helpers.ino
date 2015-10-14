@@ -1,6 +1,15 @@
-void printData()
+void printData(String data, int cCursor, int lCursor, int rCursor)
 {
-  
+  if(cCursor)
+  {
+    lcd.clear();
+    Serial.println();
+    Serial.println();
+  }
+
+  lcd.setCursor(lCursor,rCursor); //Start at character 4 on line 0
+  lcd.print(data);
+  Serial.println(data);
 }
 
 void countup()
@@ -42,19 +51,18 @@ void setLeds()
 
 void setValues()
 {
-  //######## DHT Data ###########
-  currDTemp=0;
-  currDHum=0;
-  oldDTemp=0;
-  oldDHum=0;
-  setDTemp=30;
-  setDHum=450;
-  
   //#######Moisture Data ########
   currDMois=0;
   currRMois=0;
   oldDMois=0;
   oldRMois=0;
-  setMois=500;
+  humidity_lim=500;
   
+  //######## DHT Data ###########
+  currDTemp=0;
+  currDHum=0;
+  oldDTemp=0;
+  oldDHum=0;
+  setDTemp=30; //0-50
+  setDHum=52;  //20-80 . 
 }

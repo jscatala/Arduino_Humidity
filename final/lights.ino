@@ -4,7 +4,6 @@ void doLeds()
   char sync=-1;
   for (i=0;i<4;i++)
   {
-
     switch (modeLeds[i]) {
         case 0:
            digitalWrite(pinLeds[i], LOW);
